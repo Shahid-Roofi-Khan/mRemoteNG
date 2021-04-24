@@ -194,7 +194,7 @@ namespace mRemoteNG.UI.Window
             this.ClientSize = new System.Drawing.Size(204, 411);
             this.Controls.Add(this.ConnectionTree);
             this.Controls.Add(this.searchBoxLayoutPanel);
-            this.Controls.Add(this.msMain);
+            this.Controls.Add(this.msMain);         
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HideOnClose = true;
             this.Icon = global::mRemoteNG.Properties.Resources.Root_Icon;

@@ -73,6 +73,9 @@ namespace mRemoteNG.UI.Forms
             ApplyTheme();
 
             _advancedWindowMenu = new AdvancedWindowMenu(this);
+
+            // Shahid Changes: i don't need top menu bar by default enabled.
+            tsContainer.TopToolStripPanelVisible = false;
         }
 
         #region Properties
