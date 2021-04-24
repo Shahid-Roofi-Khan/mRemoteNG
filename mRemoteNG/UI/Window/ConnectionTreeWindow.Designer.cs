@@ -74,7 +74,7 @@ namespace mRemoteNG.UI.Window
             this.ConnectionTree.VirtualMode = true;
             // 
             // msMain
-            // 
+            //
             this.msMain.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mMenAddConnection,

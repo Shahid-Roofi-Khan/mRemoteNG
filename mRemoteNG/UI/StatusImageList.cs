@@ -16,11 +16,13 @@ namespace mRemoteNG.UI
         {
             var display = new DisplayProperties();
 
+            // shahid customization start: need to set bigger horizon size so to adjust all that i require
+
             ImageList = new ImageList
             {
                 ColorDepth = ColorDepth.Depth32Bit,
                 ImageSize = new Size(
-                                     (int)Math.Round(16 * display.ResolutionScalingFactor.Width),
+                                     (int)Math.Round(32 * display.ResolutionScalingFactor.Width),
                                      (int)Math.Round(16 * display.ResolutionScalingFactor.Height)),
                 TransparentColor = Color.Transparent
             };

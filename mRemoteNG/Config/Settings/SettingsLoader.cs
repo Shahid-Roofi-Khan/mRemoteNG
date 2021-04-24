@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
@@ -197,8 +197,9 @@ namespace mRemoteNG.Config.Settings
 
         private void SetToolbarsDefault()
         {
+            // ----------------------------------- shahid change: don't want quick connect bar so default is false instead of true
             ToolStripPanelFromString("top").Join(_quickConnectToolStrip, new Point(300, 0));
-            _quickConnectToolStrip.Visible = true;
+            _quickConnectToolStrip.Visible = false;
             ToolStripPanelFromString("bottom").Join(_externalToolsToolStrip, new Point(3, 0));
             _externalToolsToolStrip.Visible = false;
         }

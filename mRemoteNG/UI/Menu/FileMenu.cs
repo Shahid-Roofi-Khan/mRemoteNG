@@ -372,6 +372,8 @@ namespace mRemoteNG.UI.Menu
 
         private void mMenFileNew_Click(object sender, EventArgs e)
         {
+           
+
             using (var saveFileDialog = DialogFactory.ConnectionsSaveAsDialog())
             {
                 if (saveFileDialog.ShowDialog() != DialogResult.OK)

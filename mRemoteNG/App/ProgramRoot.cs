@@ -28,8 +28,10 @@ namespace mRemoteNG.App
             CatchAllUnhandledExceptions();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var frmSplashScreen = FrmSplashScreen.getInstance();
-            frmSplashScreen.Show();
+
+         //     --------------------------------------------------------- Shahid Changes: don't want spash screen. Need fast start.
+           // var frmSplashScreen = FrmSplashScreen.getInstance();
+           // frmSplashScreen.Show();
             Application.Run(FrmMain.Default);
         }
 

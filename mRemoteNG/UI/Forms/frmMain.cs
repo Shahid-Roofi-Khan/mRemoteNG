@@ -781,5 +781,10 @@ namespace mRemoteNG.UI.Forms
         {
             fileMenu.mMenFile_DropDownOpening(sender, e);
         }
+
+        private void _quickConnectToolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
