@@ -721,6 +721,12 @@
     <Compile Include="UI\Window\ConfigWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Window\ConnectionTreeWindow_v2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Window\ConnectionTreeWindow_v2.Designer.cs">
+      <DependentUpon>ConnectionTreeWindow_v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Window\ConnectionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1021,6 +1027,9 @@
     <EmbeddedResource Include="UI\Window\ConfigWindow.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ConfigWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Window\ConnectionTreeWindow_v2.resx">
+      <DependentUpon>ConnectionTreeWindow_v2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Window\ConnectionWindow.resx">
       <DependentUpon>ConnectionWindow.cs</DependentUpon>
