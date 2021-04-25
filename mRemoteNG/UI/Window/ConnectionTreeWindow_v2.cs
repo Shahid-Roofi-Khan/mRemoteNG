@@ -40,6 +40,15 @@ namespace mRemoteNG.UI.Window
         {
             WindowType = WindowType.Tree;
             DockPnl = panel;
+
+            // -------------------------------------------- Shahid Changes: need to bring this code from designer to here because VS 2019 removing these lines from there
+
+            mRemoteNG.Tree.ConnectionTreeModel connectionTreeModel2 = new mRemoteNG.Tree.ConnectionTreeModel();
+            TreeNodeCompositeClickHandler treeNodeCompositeClickHandler3 = new TreeNodeCompositeClickHandler();
+            mRemoteNG.Tree.AlwaysConfirmYes alwaysConfirmYes2 = new mRemoteNG.Tree.AlwaysConfirmYes();
+            TreeNodeCompositeClickHandler treeNodeCompositeClickHandler4 = new TreeNodeCompositeClickHandler();
+            this.ConnectionTree = new ConnectionTree();
+
             InitializeComponent();
             SetMenuEventHandlers();
             SetConnectionTreeEventHandlers();

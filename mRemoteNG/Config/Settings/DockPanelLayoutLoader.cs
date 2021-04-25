@@ -72,7 +72,7 @@ namespace mRemoteNG.Config.Settings
                 if (persistString == typeof(ConfigWindow).ToString())
                     return Windows.ConfigForm;
 
-                if (persistString == typeof(ConnectionTreeWindow).ToString())
+                if (persistString == typeof(ConnectionTreeWindow).ToString() || persistString == typeof(ConnectionTreeWindow_v2).ToString())
                     return Windows.TreeForm;
 
                 if (persistString == typeof(ErrorAndInfoWindow).ToString())

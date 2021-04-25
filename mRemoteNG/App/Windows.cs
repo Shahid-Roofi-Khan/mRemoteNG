@@ -13,11 +13,11 @@ namespace mRemoteNG.App
         private static PortScanWindow _portscanForm;
         private static ScreenshotManagerWindow _screenshotmanagerForm;
         private static UltraVNCWindow _ultravncscForm;
-        private static ConnectionTreeWindow _treeForm;
+        private static ConnectionTreeWindow_v2 _treeForm;
 
-        internal static ConnectionTreeWindow TreeForm
+        internal static ConnectionTreeWindow_v2 TreeForm
         {
-            get => _treeForm ?? (_treeForm = new ConnectionTreeWindow());
+            get => _treeForm ?? (_treeForm = new ConnectionTreeWindow_v2());
             set => _treeForm = value;
         }
 

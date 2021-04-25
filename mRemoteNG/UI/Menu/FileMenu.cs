@@ -37,7 +37,7 @@ namespace mRemoteNG.UI.Menu
         private ToolStripMenuItem _mMenFileImport;
         private ToolStripMenuItem _mMenReconnectAll;
 
-        public ConnectionTreeWindow TreeWindow { get; set; }
+        public ConnectionTreeWindow_v2 TreeWindow { get; set; }
         public IConnectionInitiator ConnectionInitiator { get; set; }
 
         public FileMenu()

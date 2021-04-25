@@ -40,6 +40,9 @@ namespace mRemoteNG.UI.Window
         {
             WindowType = WindowType.Tree;
             DockPnl = panel;
+
+
+
             InitializeComponent();
             SetMenuEventHandlers();
             SetConnectionTreeEventHandlers();
