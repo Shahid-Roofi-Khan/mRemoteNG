@@ -43,13 +43,57 @@ namespace mRemoteNG.UI.Window
 
             // -------------------------------------------- Shahid Changes: need to bring this code from designer to here because VS 2019 removing these lines from there
 
+
+
+            InitializeComponent();
+
+            // ------------------------------- Shahid changes
+
             mRemoteNG.Tree.ConnectionTreeModel connectionTreeModel2 = new mRemoteNG.Tree.ConnectionTreeModel();
             TreeNodeCompositeClickHandler treeNodeCompositeClickHandler3 = new TreeNodeCompositeClickHandler();
             mRemoteNG.Tree.AlwaysConfirmYes alwaysConfirmYes2 = new mRemoteNG.Tree.AlwaysConfirmYes();
             TreeNodeCompositeClickHandler treeNodeCompositeClickHandler4 = new TreeNodeCompositeClickHandler();
             this.ConnectionTree = new ConnectionTree();
 
-            InitializeComponent();
+
+            // 
+            // olvConnections
+            // 
+            this.ConnectionTree.AllowDrop = true;
+            this.ConnectionTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ConnectionTree.CellEditUseWholeCell = false;
+            this.ConnectionTree.ConnectionTreeModel = connectionTreeModel2;
+            this.ConnectionTree.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ConnectionTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            treeNodeCompositeClickHandler3.ClickHandlers = new ITreeNodeClickHandler<mRemoteNG.Connection.ConnectionInfo>[0];
+            this.ConnectionTree.DoubleClickHandler = treeNodeCompositeClickHandler3;
+            this.ConnectionTree.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConnectionTree.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.ConnectionTree.HideSelection = false;
+            this.ConnectionTree.IsSimpleDragSource = true;
+            this.ConnectionTree.LabelEdit = true;
+            this.ConnectionTree.Location = new System.Drawing.Point(0, 24);
+            this.ConnectionTree.MultiSelect = false;
+            this.ConnectionTree.Name = "ConnectionTree";
+            this.ConnectionTree.NodeDeletionConfirmer = alwaysConfirmYes2;
+            this.ConnectionTree.PostSetupActions = new IConnectionTreeDelegate[0];
+            this.ConnectionTree.SelectedBackColor = System.Drawing.SystemColors.Highlight;
+            this.ConnectionTree.SelectedForeColor = System.Drawing.SystemColors.HighlightText;
+            this.ConnectionTree.ShowGroups = false;
+            treeNodeCompositeClickHandler4.ClickHandlers = new ITreeNodeClickHandler<mRemoteNG.Connection.ConnectionInfo>[0];
+            this.ConnectionTree.SingleClickHandler = treeNodeCompositeClickHandler4;
+            this.ConnectionTree.Size = new System.Drawing.Size(204, 366);
+            this.ConnectionTree.TabIndex = 20;
+            this.ConnectionTree.UnfocusedSelectedBackColor = System.Drawing.SystemColors.Highlight;
+            this.ConnectionTree.UnfocusedSelectedForeColor = System.Drawing.SystemColors.HighlightText;
+            this.ConnectionTree.UseCompatibleStateImageBehavior = false;
+            this.ConnectionTree.UseOverlays = false;
+            this.ConnectionTree.View = System.Windows.Forms.View.Details;
+            this.ConnectionTree.VirtualMode = true;
+
+            this.splitContainer1.Panel1.Controls.Add(ConnectionTree);
+            this.splitContainer1.Panel1.Controls.Add(msMain);
+
             SetMenuEventHandlers();
             SetConnectionTreeEventHandlers();
             Settings.Default.PropertyChanged += OnAppSettingsChanged;
