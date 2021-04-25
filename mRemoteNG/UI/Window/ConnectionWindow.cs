@@ -45,7 +45,8 @@ namespace mRemoteNG.UI.Window
             Text = formText;
             TabText = formText;
             connDock.DocumentStyle = DocumentStyle.DockingWindow;
-            connDock.ShowDocumentIcon = true;
+            //connDock.ShowDocumentIcon = true;
+            
 
             connDock.ActiveContentChanged += ConnDockOnActiveContentChanged;
         }
@@ -147,6 +148,7 @@ namespace mRemoteNG.UI.Window
                 //Show the tab
                 conTab.Show(connDock, DockState.Document);
                 conTab.Focus();
+                
                 return conTab;
             }
             catch (Exception ex)
