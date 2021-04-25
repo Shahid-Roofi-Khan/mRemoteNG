@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace mRemoteNG.Resources.Language
-{
+namespace mRemoteNG.Resources.Language {
     using System;
     
     
@@ -4187,6 +4186,15 @@ namespace mRemoteNG.Resources.Language
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For latest RDP versions, this scale values are needed. These are used in percentages..
+        /// </summary>
+        internal static string PropertyDescriptionScale {
+            get {
+                return ResourceManager.GetString("PropertyDescriptionScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the SmartSize mode to be used..
         /// </summary>
         internal static string PropertyDescriptionSmartSizeMode {
@@ -5374,6 +5382,15 @@ namespace mRemoteNG.Resources.Language
         internal static string SaveImageFilter {
             get {
                 return ResourceManager.GetString("SaveImageFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale.
+        /// </summary>
+        internal static string Scale {
+            get {
+                return ResourceManager.GetString("Scale", resourceCulture);
             }
         }
         

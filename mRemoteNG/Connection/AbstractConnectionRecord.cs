@@ -63,6 +63,7 @@ namespace mRemoteNG.Connection
         private bool _disableMenuAnimations;
         private bool _disableCursorShadow;
         private bool _disableCursorBlinking;
+        private int _scale;      // Shahid Change: i need scaling also for resolution for newer RDP versions
 
         private bool _redirectKeys;
         private bool _redirectDiskDrives;
@@ -571,6 +572,16 @@ namespace mRemoteNG.Connection
         {
             get => GetPropertyValue("DisableCursorBlinking", _disableCursorBlinking);
             set => SetField(ref _disableCursorBlinking, value, "DisableCursorBlinking");
+        }
+
+        [LocalizedAttributes.LocalizedCategory(nameof(Language.Appearance), 5),
+        LocalizedAttributes.LocalizedDisplayName(nameof(Language.Scale)),
+        LocalizedAttributes.LocalizedDescription(nameof(Language.PropertyDescriptionScale)),
+        AttributeUsedInAllProtocolsExcept()]
+        public virtual int Scale
+        {
+            get => GetPropertyValue("Scale", _scale);
+            set => SetField(ref _scale, value, "Scale");
         }
         #endregion
 

@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace mRemoteNG.Properties
-{
+namespace mRemoteNG.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -1862,7 +1861,7 @@ namespace mRemoteNG.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ConDefaultEnableFontSmoothing {
             get {
                 return ((bool)(this["ConDefaultEnableFontSmoothing"]));
@@ -1874,7 +1873,7 @@ namespace mRemoteNG.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool InhDefaultEnableFontSmoothing {
             get {
                 return ((bool)(this["InhDefaultEnableFontSmoothing"]));
@@ -2702,7 +2701,7 @@ namespace mRemoteNG.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool LockToolbars {
             get {
                 return ((bool)(this["LockToolbars"]));
@@ -2810,7 +2809,7 @@ namespace mRemoteNG.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool AlwaysShowConnectionTabs {
             get {
                 return ((bool)(this["AlwaysShowConnectionTabs"]));
@@ -3117,6 +3116,18 @@ namespace mRemoteNG.Properties
             }
             set {
                 this["InhDefaultICAEncryptionStrength"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("175")]
+        public int ConDefaultScale {
+            get {
+                return ((int)(this["ConDefaultScale"]));
+            }
+            set {
+                this["ConDefaultScale"] = value;
             }
         }
     }

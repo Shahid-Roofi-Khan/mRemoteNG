@@ -1966,7 +1966,6 @@ mRemoteNG will now quit and begin with the installation.</value>
   </data>
   <data name="CredentialUnavailable" xml:space="preserve">
     <value>Credential not available</value>
-    
   </data>
   <data name="OptionsThemeDeleteConfirmation" xml:space="preserve">
     <value>Do you really want to delete the theme?</value>
@@ -2272,5 +2271,11 @@ Development Channel includes Alphas, Betas &amp; Release Candidates.</value>
   </data>
   <data name="ShowHideMenu" xml:space="preserve">
     <value>Show/Hide Menu Strip</value>
+  </data>
+  <data name="PropertyDescriptionScale" xml:space="preserve">
+    <value>For latest RDP versions, this scale values are needed. These are used in percentages.</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
   </data>
 </root>

@@ -519,6 +519,7 @@ namespace mRemoteNG.Connection.Protocol.RDP
             try
             {
                 var scaleFactor = (uint)_displayProperties.ResolutionScalingFactor.Width * 100;
+                scaleFactor = 175;
                 SetExtendedProperty("DesktopScaleFactor", scaleFactor);
                 SetExtendedProperty("DeviceScaleFactor", (uint)100);
 
@@ -527,7 +528,7 @@ namespace mRemoteNG.Connection.Protocol.RDP
                     _rdpClient.FullScreen = true;
                     _rdpClient.DesktopWidth = Screen.FromControl(_frmMain).Bounds.Width;
                     _rdpClient.DesktopHeight = Screen.FromControl(_frmMain).Bounds.Height;
-
+                    
                     return;
                 }
 

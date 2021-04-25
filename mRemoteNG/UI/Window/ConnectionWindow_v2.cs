@@ -22,7 +22,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace mRemoteNG.UI.Window
 {
-    public partial class ConnectionWindow : BaseWindow
+    public partial class ConnectionWindow_v2 : BaseWindow
     {
         private readonly IConnectionInitiator _connectionInitiator = new ConnectionInitiator();
         private VisualStudioToolStripExtender vsToolStripExtender;
@@ -30,7 +30,7 @@ namespace mRemoteNG.UI.Window
 
         #region Public Methods
 
-        public ConnectionWindow(DockContent panel, string formText = "")
+        public ConnectionWindow_v2(DockContent panel, string formText = "")
         {
             if (formText == "")
             {
@@ -97,8 +97,6 @@ namespace mRemoteNG.UI.Window
 
         private void ConnectionWindow_GotFocus(object sender, EventArgs e)
         {
-           // Shahid Change --------------------------------------------------- i don't want tabbed document basically. I just need to see current screen always.so using v2 version of this to make changes
-
             TabHelper.Instance.CurrentPanel = this;
         }
 

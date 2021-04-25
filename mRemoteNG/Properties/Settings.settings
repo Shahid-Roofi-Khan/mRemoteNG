@@ -462,10 +462,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ConDefaultEnableFontSmoothing" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="InhDefaultEnableFontSmoothing" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ConDefaultEnableDesktopComposition" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -672,7 +672,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LockToolbars" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="RdpLoadBalanceInfoUseUtf8" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -699,7 +699,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="AlwaysShowConnectionTabs" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="OverrideFIPSCheck" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -775,6 +775,9 @@
     </Setting>
     <Setting Name="InhDefaultICAEncryptionStrength" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ConDefaultScale" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">175</Value>
     </Setting>
   </Settings>
 </SettingsFile>

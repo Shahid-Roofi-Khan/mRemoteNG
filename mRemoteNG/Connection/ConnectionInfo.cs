@@ -334,6 +334,7 @@ namespace mRemoteNG.Connection
             DisableMenuAnimations = Settings.Default.ConDefaultDisableMenuAnimations;
             DisableCursorShadow = Settings.Default.ConDefaultDisableCursorShadow;
             DisableCursorBlinking = Settings.Default.ConDefaultDisableCursorBlinking;
+            Scale = Settings.Default.ConDefaultScale;
         }
 
         private void SetRedirectDefaults()
