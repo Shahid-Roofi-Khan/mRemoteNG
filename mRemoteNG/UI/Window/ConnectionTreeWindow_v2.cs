@@ -43,9 +43,15 @@ namespace mRemoteNG.UI.Window
 
             // -------------------------------------------- Shahid Changes: need to bring this code from designer to here because VS 2019 removing these lines from there
 
-
+   
 
             InitializeComponent();
+
+            this.ConnectionTree = new ConnectionTree();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionTree)).BeginInit();
+          
+            this.ConnectionTree.SuspendLayout();
+            this.msMain.SuspendLayout();
 
             // ------------------------------- Shahid changes
 
@@ -53,8 +59,11 @@ namespace mRemoteNG.UI.Window
             TreeNodeCompositeClickHandler treeNodeCompositeClickHandler3 = new TreeNodeCompositeClickHandler();
             mRemoteNG.Tree.AlwaysConfirmYes alwaysConfirmYes2 = new mRemoteNG.Tree.AlwaysConfirmYes();
             TreeNodeCompositeClickHandler treeNodeCompositeClickHandler4 = new TreeNodeCompositeClickHandler();
-            this.ConnectionTree = new ConnectionTree();
 
+            this.splitContainer1.Panel1.ClientSize = new System.Drawing.Size(204, 411);
+            
+            this.splitContainer1.Panel1.Controls.Add(ConnectionTree);
+            this.splitContainer1.Panel1.Controls.Add(msMain);
 
             // 
             // olvConnections
@@ -91,8 +100,26 @@ namespace mRemoteNG.UI.Window
             this.ConnectionTree.View = System.Windows.Forms.View.Details;
             this.ConnectionTree.VirtualMode = true;
 
-            this.splitContainer1.Panel1.Controls.Add(ConnectionTree);
-            this.splitContainer1.Panel1.Controls.Add(msMain);
+            this.Icon = global::mRemoteNG.Properties.Resources.Root_Icon;
+
+            this.msMain.ResumeLayout(false);
+            this.msMain.PerformLayout();
+
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionTree)).EndInit();
+            this.ConnectionTree.ResumeLayout(false);
+            this.ConnectionTree.PerformLayout();
+
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+            this.mMenAddConnection.Image = global::mRemoteNG.Properties.Resources.Connection_Add;
+            this.mMenAddFolder.Image = global::mRemoteNG.Properties.Resources.Folder_Add;
+            this.mMenViewExpandAllFolders.Image = global::mRemoteNG.Properties.Resources.Expand;
+            this.mMenViewCollapseAllFolders.Image = global::mRemoteNG.Properties.Resources.Collapse;
+            this.mMenSort.Image = global::mRemoteNG.Properties.Resources.Sort_AZ;
+            this.mMenFavorites.Image = global::mRemoteNG.Properties.Resources.star;
+
+            
 
             SetMenuEventHandlers();
             SetConnectionTreeEventHandlers();

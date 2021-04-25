@@ -62,6 +62,7 @@ namespace mRemoteNG.UI.Window
             this.mMenAddConnection.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
             this.mMenAddConnection.Size = new System.Drawing.Size(8, 20);
             this.mMenAddConnection.Click += new System.EventHandler(this.CMenTreeAddConnection_Click);
+
             // 
             // mMenAddFolder
             // 
