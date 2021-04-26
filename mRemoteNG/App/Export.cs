@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
 using mRemoteNG.Config.Connections;
@@ -81,7 +81,9 @@ namespace mRemoteNG.App
                     case SaveFormat.mRXML:
                         var cryptographyProvider = new CryptoProviderFactoryFromSettings().Build();
                         var rootNode = exportTarget.GetRootParent() as RootNodeInfo;
-                        var connectionNodeSerializer = new XmlConnectionNodeSerializer27(
+
+                        // ---------------------------------------------------------------------------------------------- Shahid Changes: introuducing new Version 2.8 for Scale Attribute
+                        var connectionNodeSerializer = new XmlConnectionNodeSerializer28(
                                                                                          cryptographyProvider,
                                                                                          rootNode?.PasswordString
                                                                                                  .ConvertToSecureString() ??

@@ -557,6 +557,12 @@ namespace mRemoteNG.Config.Serializers.ConnectionSerializers.Xml
                     connectionInfo.Inheritance.DisableCursorShadow = xmlnode.GetAttributeAsBool("InheritDisableCursorShadow");
                     connectionInfo.Inheritance.DisableCursorBlinking = xmlnode.GetAttributeAsBool("InheritDisableCursorBlinking");
                 }
+
+                // -------------------------------------------------- Shahid Changes: new versoin 2.8 i added for both serializer and logic added in deserialize
+                if (_confVersion >= 2.8)
+                {
+                    connectionInfo.Scale = xmlnode.GetAttributeAsInt("Scale");
+                }
             }
             catch (Exception ex)
             {

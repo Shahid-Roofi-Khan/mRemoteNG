@@ -363,8 +363,12 @@ namespace mRemoteNG.UI.Forms
 
         private void frmMain_Shown(object sender, EventArgs e)
         {
-            PromptForUpdatesPreference();
-            CheckForUpdates();
+            // -------------------------------------------------- Shahid Changes: don't want either update check or ask for Update preference. Don't need this logic at all.
+
+            return;
+
+            //PromptForUpdatesPreference();
+            //CheckForUpdates();
         }
 
         private void PromptForUpdatesPreference()
@@ -398,6 +402,7 @@ namespace mRemoteNG.UI.Forms
 
         private void CheckForUpdates()
         {
+           
             if (!Settings.Default.CheckForUpdatesOnStartup) return;
 
             var nextUpdateCheck =
