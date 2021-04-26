@@ -229,7 +229,7 @@ namespace mRemoteNG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SingleClickOnConnectionOpensIt {
             get {
                 return ((bool)(this["SingleClickOnConnectionOpensIt"]));
@@ -1465,7 +1465,7 @@ namespace mRemoteNG.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SingleClickSwitchesToOpenConnection {
             get {
                 return ((bool)(this["SingleClickSwitchesToOpenConnection"]));
