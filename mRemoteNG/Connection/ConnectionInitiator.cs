@@ -62,6 +62,10 @@ namespace mRemoteNG.Connection
 
             try
             {
+                // ----------------------------------------------------------------------------------- Shahid Change: set a new state of connecting if no connection exist already
+                connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.Connecting;
+
+
                 if (connectionInfo.Hostname == "" && connectionInfo.Protocol != ProtocolType.IntApp)
                 {
                     Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
@@ -225,11 +229,14 @@ namespace mRemoteNG.Connection
                 }
 
                 connectionInfoOriginal.OpenConnections.Add(newProtocol);
+
                 _activeConnections.Add(connectionInfo.ConstantID);
                 FrmMain.Default.SelectedConnection = connectionInfo;
             }
             catch (Exception ex)
             {
+                // -------------------------------------------------------------- Shahid Change: if not connection remains, then set state to not connecting. its no more trying to connect in that case.
+                connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                 Runtime.MessageCollector.AddExceptionStackTrace(Language.ConnectionOpenFailed, ex);
             }
         }
@@ -352,6 +359,14 @@ namespace mRemoteNG.Connection
 
         private static void Prot_Event_Disconnected(object sender, string disconnectedMessage, int? reasonCode)
         {
+            // -------------------------------- Shahid Change: try to update the state
+            try
+            {
+                var prot = (ProtocolBase)sender;
+                prot.InterfaceControl.OriginalInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
+            }
+            catch { }
+
             try
             {
                 var prot = (ProtocolBase)sender;
@@ -385,8 +400,18 @@ namespace mRemoteNG.Connection
 
         private void Prot_Event_Closed(object sender)
         {
+
+            // -------------------------------- Shahid Change: try to update the state
             try
             {
+                var prot = (ProtocolBase)sender;
+                prot.InterfaceControl.OriginalInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
+            }
+            catch { }
+
+            try
+            {
+
                 var prot = (ProtocolBase)sender;
                 Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, Language.ConnenctionCloseEvent,
                                                     true);
@@ -404,6 +429,10 @@ namespace mRemoteNG.Connection
                                                                   prot.InterfaceControl.Info.Protocol,
                                                                   Environment.UserName));
                 prot.InterfaceControl.OriginalInfo.OpenConnections.Remove(prot);
+
+                // -------------------------------------------------------------------- Shahid Change: why not set the not connect state as well right here if zero connections 
+                if (prot.InterfaceControl.OriginalInfo.OpenConnections.Count == 0) prot.InterfaceControl.OriginalInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
+
                 if (_activeConnections.Contains(prot.InterfaceControl.Info.ConstantID))
                     _activeConnections.Remove(prot.InterfaceControl.Info.ConstantID);
 
@@ -420,6 +449,15 @@ namespace mRemoteNG.Connection
         private static void Prot_Event_Connected(object sender)
         {
             var prot = (ProtocolBase)sender;
+
+            // -------------------------------- Shahid Change: try to update the state
+            try
+            {
+                prot.InterfaceControl.OriginalInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.Connected;
+            }
+            catch { }
+
+
             Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, Language.ConnectionEventConnected,
                                                 true);
             Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg,
@@ -432,6 +470,15 @@ namespace mRemoteNG.Connection
 
         private static void Prot_Event_ErrorOccured(object sender, string errorMessage, int? errorCode)
         {
+
+            // -------------------------------- Shahid Change: try to update the state
+            try
+            {
+                var prot = (ProtocolBase)sender;
+                prot.InterfaceControl.OriginalInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
+            }
+            catch { }
+
             try
             {
                 var prot = (ProtocolBase)sender;

@@ -460,5 +460,21 @@ namespace mRemoteNG.UI.Window
         }
 
         #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string out1 = "";
+            try
+            {
+                out1 = this.ConnectionTree.SelectedNode.ConnectionCurrentState.ToString();
+            }
+            catch
+            {
+                out1 = "exception";
+            }
+
+            textBox1.Text = out1;
+
+        }
     }
 }

@@ -29,17 +29,22 @@ namespace mRemoteNG.UI.Window
             this.txtSearch = new mRemoteNG.UI.Controls.MrngSearchBox();
             this.searchBoxLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.msMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.searchBoxLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // msMain
             // 
             this.msMain.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msMain.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.msMain.ImageScalingSize = new System.Drawing.Size(28, 28);
             this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mMenAddConnection,
             this.mMenAddFolder,
@@ -49,9 +54,9 @@ namespace mRemoteNG.UI.Window
             this.mMenFavorites});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
-            this.msMain.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.msMain.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.msMain.ShowItemToolTips = true;
-            this.msMain.Size = new System.Drawing.Size(204, 24);
+            this.msMain.Size = new System.Drawing.Size(364, 24);
             this.msMain.TabIndex = 10;
             this.msMain.Text = "MenuStrip1";
             // 
@@ -60,41 +65,41 @@ namespace mRemoteNG.UI.Window
             this.mMenAddConnection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.mMenAddConnection.Name = "mMenAddConnection";
             this.mMenAddConnection.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.mMenAddConnection.Size = new System.Drawing.Size(8, 20);
+            this.mMenAddConnection.Size = new System.Drawing.Size(8, 16);
             this.mMenAddConnection.Click += new System.EventHandler(this.CMenTreeAddConnection_Click);
             // 
             // mMenAddFolder
             // 
             this.mMenAddFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.mMenAddFolder.Name = "mMenAddFolder";
-            this.mMenAddFolder.Size = new System.Drawing.Size(12, 20);
+            this.mMenAddFolder.Size = new System.Drawing.Size(18, 16);
             this.mMenAddFolder.Click += new System.EventHandler(this.CMenTreeAddFolder_Click);
             // 
             // mMenViewExpandAllFolders
             // 
             this.mMenViewExpandAllFolders.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.mMenViewExpandAllFolders.Name = "mMenViewExpandAllFolders";
-            this.mMenViewExpandAllFolders.Size = new System.Drawing.Size(12, 20);
+            this.mMenViewExpandAllFolders.Size = new System.Drawing.Size(18, 16);
             this.mMenViewExpandAllFolders.Text = "Expand all folders";
             // 
             // mMenViewCollapseAllFolders
             // 
             this.mMenViewCollapseAllFolders.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.mMenViewCollapseAllFolders.Name = "mMenViewCollapseAllFolders";
-            this.mMenViewCollapseAllFolders.Size = new System.Drawing.Size(12, 20);
+            this.mMenViewCollapseAllFolders.Size = new System.Drawing.Size(18, 16);
             this.mMenViewCollapseAllFolders.Text = "Collapse all folders";
             // 
             // mMenSort
             // 
             this.mMenSort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.mMenSort.Name = "mMenSort";
-            this.mMenSort.Size = new System.Drawing.Size(12, 20);
+            this.mMenSort.Size = new System.Drawing.Size(18, 16);
             // 
             // mMenFavorites
             // 
             this.mMenFavorites.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.mMenFavorites.Name = "mMenFavorites";
-            this.mMenFavorites.Size = new System.Drawing.Size(12, 20);
+            this.mMenFavorites.Size = new System.Drawing.Size(18, 16);
             this.mMenFavorites.Text = "Favorites";
             // 
             // vsToolStripExtender
@@ -107,7 +112,7 @@ namespace mRemoteNG.UI.Window
             this.pbSearch.Location = new System.Drawing.Point(0, 0);
             this.pbSearch.Margin = new System.Windows.Forms.Padding(0);
             this.pbSearch.Name = "pbSearch";
-            this.pbSearch.Size = new System.Drawing.Size(26, 21);
+            this.pbSearch.Size = new System.Drawing.Size(46, 37);
             this.pbSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbSearch.TabIndex = 1;
             this.pbSearch.TabStop = false;
@@ -118,10 +123,10 @@ namespace mRemoteNG.UI.Window
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtSearch.Location = new System.Drawing.Point(26, 3);
+            this.txtSearch.Location = new System.Drawing.Point(46, 5);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(0);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(178, 15);
+            this.txtSearch.Size = new System.Drawing.Size(318, 26);
             this.txtSearch.TabIndex = 30;
             this.txtSearch.TabStop = false;
             this.txtSearch.Text = "Search";
@@ -132,22 +137,24 @@ namespace mRemoteNG.UI.Window
             // 
             this.searchBoxLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
             this.searchBoxLayoutPanel.ColumnCount = 2;
-            this.searchBoxLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.searchBoxLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.searchBoxLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.searchBoxLayoutPanel.Controls.Add(this.pbSearch, 0, 0);
             this.searchBoxLayoutPanel.Controls.Add(this.txtSearch);
             this.searchBoxLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.searchBoxLayoutPanel.Location = new System.Drawing.Point(0, 490);
+            this.searchBoxLayoutPanel.Location = new System.Drawing.Point(0, 857);
+            this.searchBoxLayoutPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.searchBoxLayoutPanel.Name = "searchBoxLayoutPanel";
             this.searchBoxLayoutPanel.RowCount = 1;
             this.searchBoxLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.searchBoxLayoutPanel.Size = new System.Drawing.Size(204, 21);
+            this.searchBoxLayoutPanel.Size = new System.Drawing.Size(364, 37);
             this.searchBoxLayoutPanel.TabIndex = 32;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -155,20 +162,37 @@ namespace mRemoteNG.UI.Window
             // 
             this.splitContainer1.Panel1.Controls.Add(this.msMain);
             this.splitContainer1.Panel1MinSize = 200;
-            this.splitContainer1.Size = new System.Drawing.Size(204, 511);
-            this.splitContainer1.SplitterDistance = 255;
-            this.splitContainer1.SplitterWidth = 6;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(364, 894);
+            this.splitContainer1.SplitterDistance = 446;
+            this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 33;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(46, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(196, 33);
+            this.textBox1.TabIndex = 0;
             // 
             // ConnectionTreeWindow_v2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(204, 511);
+            this.ClientSize = new System.Drawing.Size(364, 894);
             this.Controls.Add(this.searchBoxLayoutPanel);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HideOnClose = true;
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "ConnectionTreeWindow_v2";
             this.TabText = "Connections";
             this.Text = "Connections";
@@ -180,6 +204,8 @@ namespace mRemoteNG.UI.Window
             this.searchBoxLayoutPanel.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -194,5 +220,7 @@ namespace mRemoteNG.UI.Window
         public System.Windows.Forms.TableLayoutPanel searchBoxLayoutPanel;
         internal System.Windows.Forms.ToolStripMenuItem mMenFavorites;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

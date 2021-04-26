@@ -79,6 +79,22 @@ namespace mRemoteNG.Connection
 
         #region Public Methods
 
+        // ----------------------------------------Shahid Changes: i need proper state variable to dictate the icon and graphics -------
+        public enum ConnectionState {  Connected = 0, Connecting = 1, NotConnected = -1, BusySaving = 2, BusyRestoring = 3 };
+        private ConnectionState _connectionCurrentState = ConnectionState.NotConnected;
+        public ConnectionState ConnectionCurrentState
+        {
+            get
+            {
+                //if (OpenConnections.Count > 0 && _connectionCurrentState == ConnectionState.NotConnected) _connectionCurrentState = ConnectionState.Connected;
+                return _connectionCurrentState;
+            }
+
+            set { _connectionCurrentState = value; }
+            
+        }
+        // ------------------------------------------------
+
         public virtual ConnectionInfo Clone()
         {
             var newConnectionInfo = new ConnectionInfo();
