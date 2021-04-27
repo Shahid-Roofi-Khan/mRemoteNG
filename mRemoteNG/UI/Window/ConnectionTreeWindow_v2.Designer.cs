@@ -44,6 +44,8 @@ namespace mRemoteNG.UI.Window
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.msMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.searchBoxLayoutPanel.SuspendLayout();
@@ -183,6 +185,7 @@ namespace mRemoteNG.UI.Window
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
+            this.splitContainer1.Panel2.Controls.Add(this.richTextBox2);
             this.splitContainer1.Panel2.Controls.Add(this.chart4);
             this.splitContainer1.Panel2.Controls.Add(this.chart3);
             this.splitContainer1.Panel2.Controls.Add(this.chart2);
@@ -190,7 +193,7 @@ namespace mRemoteNG.UI.Window
             this.splitContainer1.Panel2.Controls.Add(this.chart1);
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
             this.splitContainer1.Size = new System.Drawing.Size(364, 1165);
-            this.splitContainer1.SplitterDistance = 345;
+            this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 33;
             // 
@@ -292,9 +295,9 @@ namespace mRemoteNG.UI.Window
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(262, 44);
+            this.button1.Location = new System.Drawing.Point(248, 40);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(61, 33);
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -344,11 +347,30 @@ namespace mRemoteNG.UI.Window
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(170, 1175);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(8, 66);
+            this.richTextBox1.TabIndex = 34;
+            this.richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.Location = new System.Drawing.Point(16, 928);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(293, 222);
+            this.richTextBox2.TabIndex = 6;
+            this.richTextBox2.Text = "line1\nline2";
+            // 
             // ConnectionTreeWindow_v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(364, 1165);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.searchBoxLayoutPanel);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -392,5 +414,7 @@ namespace mRemoteNG.UI.Window
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
