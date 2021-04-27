@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
@@ -50,6 +51,52 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
         public ITreeNodeClickHandler<ConnectionInfo> SingleClickHandler { get; set; } =
             new TreeNodeCompositeClickHandler();
 
+        
+
+
+        // ----------------------- Shahid changes for event handler
+       // public DataGridViewCellFormattingEventHandler FormattingEventHandler { get; set; } = new DataGridViewCellFormattingEventHandler();
+
+       
+        private void Event_FormatCell(object sender, FormatCellEventArgs e)
+        {
+            // Put a love heart next to Nicola's name :)
+            if (e.RowIndex == 1)
+            {
+                //if (e.SubItem.Text.ToLowerInvariant().StartsWith("nicola"))
+                //{
+                //    e.SubItem.Decoration = new ImageDecoration(Resource1.loveheart, 64);
+                //}
+                //else
+                //    e.SubItem.Decoration = null;
+
+                e.SubItem.Decoration = new ImageDecoration(Properties.Resources.loading_icon_black.ToBitmap(), 200, ContentAlignment.MiddleRight); // Resource1.loveheart, 64);
+
+                //CellBorderDecoration cbd = new CellBorderDecoration();
+                //cbd.BorderPen = new Pen(Color.FromArgb(128, Color.Firebrick));
+                //cbd.FillBrush = null;
+                //cbd.CornerRounding = 4.0f;
+                //e.SubItem.Decorations.Add(cbd); // N.B. Adds to Decorations
+            }
+
+            // If the occupation is missing a value, put a composite decoration over it
+            // to draw attention to.
+            //if (e.ColumnIndex == 1 && e.SubItem.Text == "")
+            //{
+            //    TextDecoration decoration = new TextDecoration("Missing!", 255);
+            //    decoration.Alignment = ContentAlignment.MiddleCenter;
+            //    decoration.Font = new Font(this.Font.Name, this.Font.SizeInPoints + 2);
+            //    decoration.TextColor = Color.Firebrick;
+            //    decoration.Rotation = -20;
+            //    e.SubItem.Decoration = decoration;
+            //    CellBorderDecoration cbd = new CellBorderDecoration();
+            //    cbd.BorderPen = new Pen(Color.FromArgb(128, Color.Firebrick));
+            //    cbd.FillBrush = null;
+            //    cbd.CornerRounding = 4.0f;
+            //    e.SubItem.Decorations.Add(cbd);
+            //}
+        }
+
         public ConnectionTreeModel ConnectionTreeModel
         {
             get { return _connectionTreeModel; }
@@ -71,7 +118,13 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
             UseOverlays = false;
             _themeManager = ThemeManager.getInstance();
             _themeManager.ThemeChanged += ThemeManagerOnThemeChanged;
-            ApplyTheme(); 
+            ApplyTheme();
+
+            UseCellFormatEvents = true;
+            //public DataGridViewCellFormattingEventHandler FormattingEventHandler { get; set; } += new DataGridViewCellFormattingEventHandler(this.);
+            this.FormatCell += new System.EventHandler<BrightIdeasSoftware.FormatCellEventArgs>(this.Event_FormatCell);
+            
+
         }
 
         private void ThemeManagerOnThemeChanged()
