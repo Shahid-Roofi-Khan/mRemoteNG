@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using mRemoteNG.App;
 using mRemoteNG.Config.Connections;
 using mRemoteNG.Connection;
@@ -479,6 +480,18 @@ namespace mRemoteNG.UI.Window
             this.ConnectionTree.PerformLayout();
             this.ConnectionTree.Refresh();
             //this.PerformLayout();
+
+        }
+        Queue<int> Vals = new Queue<int>(new[] { 0, 50, 50, 90, 100 });
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            //Series s1 = new Series();
+            //s1.Points.DataBindXY(new[] { 1,2,3,4,5 }, new[] { 0, 50, 50, 90, 100 });
+            //s1.ChartType = SeriesChartType.Line;
+            //chart1.Series.Add(s1);
+            chart1.Series[0].Points.DataBindY(Vals);
 
         }
     }
