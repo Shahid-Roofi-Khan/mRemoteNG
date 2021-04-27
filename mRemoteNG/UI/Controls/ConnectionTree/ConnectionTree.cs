@@ -73,7 +73,7 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
 
                 e.SubItem.Decoration = new ImageDecoration(testimg, 255, ContentAlignment.MiddleRight); // Resource1.loveheart, 64);
                 //"⚠🆗✔️⛔✅☣️"
-                TextDecoration decoration = new TextDecoration("2000ms       ", 255);
+                TextDecoration decoration = new TextDecoration("200ms      .", 255);
                 decoration.Alignment = ContentAlignment.MiddleRight;
                 decoration.Font = new Font(this.Font.Name, this.Font.SizeInPoints, FontStyle.Bold);
                 decoration.TextColor = Color.Green;

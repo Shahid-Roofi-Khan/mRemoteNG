@@ -17,14 +17,14 @@ namespace mRemoteNG.UI.Window
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.msMain = new System.Windows.Forms.MenuStrip();
             this.mMenAddConnection = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenAddFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,13 +37,13 @@ namespace mRemoteNG.UI.Window
             this.txtSearch = new mRemoteNG.UI.Controls.MrngSearchBox();
             this.searchBoxLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.msMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearch)).BeginInit();
             this.searchBoxLayoutPanel.SuspendLayout();
@@ -51,10 +51,10 @@ namespace mRemoteNG.UI.Window
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
             this.SuspendLayout();
             // 
             // msMain
@@ -190,9 +190,41 @@ namespace mRemoteNG.UI.Window
             this.splitContainer1.Panel2.Controls.Add(this.chart1);
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
             this.splitContainer1.Size = new System.Drawing.Size(364, 1165);
-            this.splitContainer1.SplitterDistance = 796;
+            this.splitContainer1.SplitterDistance = 345;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 33;
+            // 
+            // chart4
+            // 
+            chartArea5.AxisX.LabelStyle.Enabled = false;
+            chartArea5.AxisX.Maximum = 60D;
+            chartArea5.AxisX.Minimum = 0D;
+            chartArea5.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea5.AxisY.LabelStyle.Enabled = false;
+            chartArea5.AxisY.Maximum = 100D;
+            chartArea5.AxisY.Minimum = 0D;
+            chartArea5.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea5.CursorX.LineColor = System.Drawing.Color.Blue;
+            chartArea5.CursorX.LineWidth = 2;
+            chartArea5.CursorY.LineWidth = 2;
+            chartArea5.InnerPlotPosition.Auto = false;
+            chartArea5.InnerPlotPosition.Height = 100F;
+            chartArea5.InnerPlotPosition.Width = 100F;
+            chartArea5.Name = "ChartArea1";
+            chartArea5.Position.Auto = false;
+            chartArea5.Position.Height = 100F;
+            chartArea5.Position.Width = 100F;
+            this.chart4.ChartAreas.Add(chartArea5);
+            this.chart4.Location = new System.Drawing.Point(46, 720);
+            this.chart4.Name = "chart4";
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series5.IsVisibleInLegend = false;
+            series5.Name = "Series1";
+            this.chart4.Series.Add(series5);
+            this.chart4.Size = new System.Drawing.Size(263, 190);
+            this.chart4.TabIndex = 5;
+            this.chart4.Text = "chart4";
             // 
             // chart3
             // 
@@ -312,38 +344,6 @@ namespace mRemoteNG.UI.Window
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // chart4
-            // 
-            chartArea5.AxisX.LabelStyle.Enabled = false;
-            chartArea5.AxisX.Maximum = 60D;
-            chartArea5.AxisX.Minimum = 0D;
-            chartArea5.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea5.AxisY.LabelStyle.Enabled = false;
-            chartArea5.AxisY.Maximum = 100D;
-            chartArea5.AxisY.Minimum = 0D;
-            chartArea5.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea5.CursorX.LineColor = System.Drawing.Color.Blue;
-            chartArea5.CursorX.LineWidth = 2;
-            chartArea5.CursorY.LineWidth = 2;
-            chartArea5.InnerPlotPosition.Auto = false;
-            chartArea5.InnerPlotPosition.Height = 100F;
-            chartArea5.InnerPlotPosition.Width = 100F;
-            chartArea5.Name = "ChartArea1";
-            chartArea5.Position.Auto = false;
-            chartArea5.Position.Height = 100F;
-            chartArea5.Position.Width = 100F;
-            this.chart4.ChartAreas.Add(chartArea5);
-            this.chart4.Location = new System.Drawing.Point(46, 720);
-            this.chart4.Name = "chart4";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
-            series5.IsVisibleInLegend = false;
-            series5.Name = "Series1";
-            this.chart4.Series.Add(series5);
-            this.chart4.Size = new System.Drawing.Size(263, 190);
-            this.chart4.TabIndex = 5;
-            this.chart4.Text = "chart4";
-            // 
             // ConnectionTreeWindow_v2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
@@ -369,10 +369,10 @@ namespace mRemoteNG.UI.Window
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
             this.ResumeLayout(false);
 
 		}

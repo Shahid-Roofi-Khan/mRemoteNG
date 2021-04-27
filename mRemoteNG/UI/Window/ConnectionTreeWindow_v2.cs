@@ -492,6 +492,10 @@ namespace mRemoteNG.UI.Window
             //s1.ChartType = SeriesChartType.Line;
             //chart1.Series.Add(s1);
             chart1.Series[0].Points.DataBindY(Vals);
+            chart2.Series[0].Points.DataBindY(Vals);
+            chart3.Series[0].Points.DataBindY(Vals);
+            chart4.Series[0].Points.DataBindY(Vals);
+
 
         }
     }
