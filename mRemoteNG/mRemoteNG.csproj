@@ -1229,6 +1229,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\loading_icon_black.ico" />
+    <None Include="Resources\Green.png" />
+    <None Include="Resources\Red.png" />
+    <None Include="Resources\Yellow.png" />
+    <None Include="Resources\Green_1.png" />
+    <None Include="Resources\Red_1.png" />
+    <None Include="Resources\Yellow_1.png" />
     <Content Include="Schemas\mremoteng_confcons_v2_6.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

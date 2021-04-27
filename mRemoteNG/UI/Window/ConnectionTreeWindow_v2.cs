@@ -466,6 +466,7 @@ namespace mRemoteNG.UI.Window
             string out1 = "";
             try
             {
+                if (this.ConnectionTree.SelectedNode == null) return;
                 out1 = this.ConnectionTree.SelectedNode.ConnectionCurrentState.ToString();
             }
             catch

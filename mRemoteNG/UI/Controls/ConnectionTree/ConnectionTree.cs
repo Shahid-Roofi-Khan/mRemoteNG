@@ -52,12 +52,12 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
             new TreeNodeCompositeClickHandler();
 
         
-
+        private Image testimg = new Bitmap(Properties.Resources.Green_1, new Size(48, 48));
 
         // ----------------------- Shahid changes for event handler
-       // public DataGridViewCellFormattingEventHandler FormattingEventHandler { get; set; } = new DataGridViewCellFormattingEventHandler();
+        // public DataGridViewCellFormattingEventHandler FormattingEventHandler { get; set; } = new DataGridViewCellFormattingEventHandler();
 
-       
+
         private void Event_FormatCell(object sender, FormatCellEventArgs e)
         {
             // Put a love heart next to Nicola's name :)
@@ -69,8 +69,24 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
                 //}
                 //else
                 //    e.SubItem.Decoration = null;
+                
 
-                e.SubItem.Decoration = new ImageDecoration(Properties.Resources.loading_icon_black.ToBitmap(), 200, ContentAlignment.MiddleRight); // Resource1.loveheart, 64);
+                e.SubItem.Decoration = new ImageDecoration(testimg, 255, ContentAlignment.MiddleRight); // Resource1.loveheart, 64);
+                //"⚠🆗✔️⛔✅☣️"
+                TextDecoration decoration = new TextDecoration("2000ms       ", 255);
+                decoration.Alignment = ContentAlignment.MiddleRight;
+                decoration.Font = new Font(this.Font.Name, this.Font.SizeInPoints, FontStyle.Bold);
+                decoration.TextColor = Color.Green;
+             //   decoration.Rotation = -20;
+                e.SubItem.Decorations.Add(decoration); //NB. Sets Decoration
+
+                decoration = new TextDecoration("300ms", 255);
+                decoration.Alignment = ContentAlignment.MiddleRight;
+                decoration.Font = new Font(this.Font.Name, this.Font.SizeInPoints, FontStyle.Bold);
+                decoration.TextColor = Color.Firebrick;
+                //   decoration.Rotation = -20;
+             //   e.SubItem.Decorations.Add(decoration); //NB. Sets Decoration
+
 
                 //CellBorderDecoration cbd = new CellBorderDecoration();
                 //cbd.BorderPen = new Pen(Color.FromArgb(128, Color.Firebrick));
