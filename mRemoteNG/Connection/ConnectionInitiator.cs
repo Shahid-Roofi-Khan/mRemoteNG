@@ -368,6 +368,9 @@ namespace mRemoteNG.Connection
             newProtocol.Connected += Prot_Event_Connected;
             newProtocol.Closed += Prot_Event_Closed;
             newProtocol.ErrorOccured += Prot_Event_ErrorOccured;
+          //  newProtocol.Connecting += Prot_Event_Connecting;
+            
+            
         }
 
         private static void BuildConnectionInterfaceController(ConnectionInfo connectionInfo,
@@ -381,7 +384,17 @@ namespace mRemoteNG.Connection
 
         #region Event handlers
 
-        private static void Prot_Event_Disconnected(object sender, string disconnectedMessage, int? reasonCode)
+        //private static void Prot_Event_Connecting(object sender)
+        //{
+        //    try
+        //    {
+        //        var prot = (ProtocolBase)sender;
+        //        prot.InterfaceControl.OriginalInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.Connecting;
+        //    }
+        //    catch { }
+
+        //}
+            private static void Prot_Event_Disconnected(object sender, string disconnectedMessage, int? reasonCode)
         {
             // -------------------------------- Shahid Change: try to update the state
             try
