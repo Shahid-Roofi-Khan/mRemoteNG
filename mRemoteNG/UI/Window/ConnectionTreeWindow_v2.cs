@@ -475,6 +475,10 @@ namespace mRemoteNG.UI.Window
 
             textBox1.Text = out1;
 
+            this.ConnectionTree.PerformLayout();
+            this.ConnectionTree.Refresh();
+            //this.PerformLayout();
+
         }
     }
 }

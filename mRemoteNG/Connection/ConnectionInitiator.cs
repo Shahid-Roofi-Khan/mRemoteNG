@@ -62,14 +62,14 @@ namespace mRemoteNG.Connection
 
             try
             {
-                // ----------------------------------------------------------------------------------- Shahid Change: set a new state of connecting if no connection exist already
-                connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.Connecting;
-
+            
 
                 if (connectionInfo.Hostname == "" && connectionInfo.Protocol != ProtocolType.IntApp)
                 {
                     Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                                                         Language.ConnectionOpenFailedNoHostname);
+
+                    
                     return;
                 }
 
@@ -78,12 +78,23 @@ namespace mRemoteNG.Connection
                 if (!force.HasFlag(ConnectionInfo.Force.DoNotJump))
                 {
                     if (SwitchToOpenConnection(connectionInfo))
+                    {
+                        
                         return;
+                    }
                 }
+
+                // ----------------------------------------------------------------------------------- Shahid Change: set a new state of connecting if no connection exist already
+                connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.Connecting;
+
 
                 var protocolFactory = new ProtocolFactory();
                 var connectionPanel = SetConnectionPanel(connectionInfo, force);
-                if (string.IsNullOrEmpty(connectionPanel)) return;
+                if (string.IsNullOrEmpty(connectionPanel))
+                {
+                    connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
+                    return;
+                }
                 var connectionForm = SetConnectionForm(conForm, connectionPanel);
                 Control connectionContainer = null;
 
@@ -100,6 +111,7 @@ namespace mRemoteNG.Connection
                     {
                         Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                             string.Format(Language.SshTunnelConfigProblem, connectionInfoOriginal.Name, connectionInfoOriginal.SSHTunnelConnectionName));
+                        connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                         return;
                     }
                     Runtime.MessageCollector.AddMessage(MessageClass.DebugMsg,
@@ -128,6 +140,7 @@ namespace mRemoteNG.Connection
                     {
                         Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                             string.Format(Language.SshTunnelIsNotPutty, connectionInfoOriginal.Name, connectionInfoSshTunnel.Name));
+                        connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                         return;
                     }
 
@@ -142,6 +155,7 @@ namespace mRemoteNG.Connection
                         protocolSshTunnel.Close();
                         Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                             string.Format(Language.SshTunnelNotInitialized, connectionInfoOriginal.Name, connectionInfoSshTunnel.Name));
+                        connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                         return;
                     }
 
@@ -150,6 +164,7 @@ namespace mRemoteNG.Connection
                         protocolSshTunnel.Close();
                         Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                             string.Format(Language.SshTunnelNotConnected, connectionInfoOriginal.Name, connectionInfoSshTunnel.Name));
+                        connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                         return;
                     }
 
@@ -171,6 +186,7 @@ namespace mRemoteNG.Connection
                             protocolSshTunnel.Close();
                             Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                                 string.Format(Language.SshTunnelFailed, connectionInfoOriginal.Name, connectionInfoSshTunnel.Name));
+                            connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                             return;
                         }
 
@@ -178,6 +194,7 @@ namespace mRemoteNG.Connection
                         {
                             testsock.Connect(System.Net.IPAddress.Loopback, localSshTunnelPort);
                             testsock.Close();
+                            connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                             break;
                         }
                         catch
@@ -191,6 +208,7 @@ namespace mRemoteNG.Connection
                         protocolSshTunnel.Close();
                         Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
                             string.Format(Language.SshTunnelPortNotReadyInTime, connectionInfoOriginal.Name, connectionInfoSshTunnel.Name));
+                        connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                         return;
                     }
 
@@ -219,12 +237,14 @@ namespace mRemoteNG.Connection
                 if (newProtocol.Initialize() == false)
                 {
                     newProtocol.Close();
+                    connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                     return;
                 }
 
                 if (newProtocol.Connect() == false)
                 {
                     newProtocol.Close();
+                    connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                     return;
                 }
 
@@ -239,6 +259,10 @@ namespace mRemoteNG.Connection
                 connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
                 Runtime.MessageCollector.AddExceptionStackTrace(Language.ConnectionOpenFailed, ex);
             }
+            //finally   // this is added so that if method returned without creating connection then set connection to not connected
+            //{
+            //    if (connectionInfo.ConnectionCurrentState != ConnectionInfo.ConnectionState.Connected) connectionInfo.ConnectionCurrentState = ConnectionInfo.ConnectionState.NotConnected;
+            //}
         }
 
         // recursively traverse the tree to find ConnectionInfo of a specific name

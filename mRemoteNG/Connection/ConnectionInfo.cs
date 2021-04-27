@@ -93,6 +93,14 @@ namespace mRemoteNG.Connection
             set { _connectionCurrentState = value; }
             
         }
+        private int _lastWaitImageIndex = 0;   // this is to cycle wait icon
+
+        public int GetLastWaitImageIndex(int last)
+        {
+            if (_lastWaitImageIndex == last) _lastWaitImageIndex = 0;
+
+            return _lastWaitImageIndex++;
+        }
         // ------------------------------------------------
 
         public virtual ConnectionInfo Clone()

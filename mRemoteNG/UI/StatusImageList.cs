@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using mRemoteNG.App;
 using mRemoteNG.Connection;
@@ -22,7 +23,7 @@ namespace mRemoteNG.UI
             {
                 ColorDepth = ColorDepth.Depth32Bit,
                 ImageSize = new Size(
-                                     (int)Math.Round(32 * display.ResolutionScalingFactor.Width),
+                                     (int)Math.Round(16 * display.ResolutionScalingFactor.Width),
                                      (int)Math.Round(16 * display.ResolutionScalingFactor.Height)),
                 TransparentColor = Color.Transparent
             };
@@ -50,14 +51,39 @@ namespace mRemoteNG.UI
             if (connectionInfo is RootNodeInfo) return "Root";
             if (connectionInfo is ContainerInfo) return "Folder";
 
-            return GetConnectionIcon(connectionInfo);
+            return GetConnectionIcon_v2(connectionInfo);
         }
 
         private static string BuildConnectionIconName(string icon, bool connected)
         {
+
             var status = connected ? "Play" : "Default";
             return $"Connection_{icon}_{status}";
         }
+
+        private static string GetConnectionIconName(string icon, ConnectionInfo connectionInfo)
+        {
+            string name = null;
+
+            switch (connectionInfo.ConnectionCurrentState)
+            {
+                case ConnectionInfo.ConnectionState.Connected:  name = $"Connection_{icon}_Play";
+                    break;
+                case ConnectionInfo.ConnectionState.NotConnected: name = $"Connection_{icon}_Default";
+                    break;
+                case ConnectionInfo.ConnectionState.BusySaving:
+                    break;
+                case ConnectionInfo.ConnectionState.BusyRestoring:
+                    break;
+                case ConnectionInfo.ConnectionState.Connecting:  name = $"{ connectionInfo.GetLastWaitImageIndex(36).ToString() }";
+                    break;
+                default:
+                    break;
+            }
+
+            return name;
+        }
+
 
         private const string DefaultConnectionIcon = "";
 
@@ -83,6 +109,39 @@ namespace mRemoteNG.UI
             return name;
         }
 
+        // -------------------------------------------------------------------------------------- Shahid Change: i need complex icon rendering based on new logic and animations feature
+        private string GetConnectionIcon_v2(ConnectionInfo connectionInfo)
+        {
+
+            if (string.IsNullOrEmpty(connectionInfo.Icon))   // If no Icon mentioned or present there to use as  base
+            {
+                return DefaultConnectionIcon;
+            }
+
+            var connected = connectionInfo.OpenConnections.Count > 0;
+            var name = GetConnectionIconName(connectionInfo.Icon, connectionInfo);
+
+            if (ImageList.Images.ContainsKey(name)) return name;  // if List is populated already then just select and return.
+
+
+            // ------------------------------------------- Populate Image List ---------------------------------------------------
+
+
+            var image = ConnectionIcon.FromString(connectionInfo.Icon);
+            if (image == null)
+            {
+                return DefaultConnectionIcon;    // if no icon is selected then nothing to work here 
+            }
+
+            ImageList.Images.Add(BuildConnectionIconName(connectionInfo.Icon, false), image);
+            ImageList.Images.Add(BuildConnectionIconName(connectionInfo.Icon, true),
+                                 Overlay(image, Properties.Resources.ConnectedOverlay));
+
+            MakeFrames(ImageList, 10);
+
+            return name;
+        }
+
         private static Bitmap Overlay(Icon background, Image foreground)
         {
             var result = new Bitmap(background.ToBitmap(), new Size(16, 16));
@@ -93,6 +152,8 @@ namespace mRemoteNG.UI
 
             return result;
         }
+
+        
 
         private static void FillImageList(ImageList imageList)
         {
@@ -109,6 +170,55 @@ namespace mRemoteNG.UI
                                                                 ex);
             }
         }
+
+        private void MakeFrames(ImageList imageList1, float angle)
+        {
+            Bitmap ico = Properties.Resources.loading_icon_black.ToBitmap();
+            int index = 0;
+
+            for (float i = 0; i < 360; i += angle)
+            {
+                Image rotated = RotateImage(ico, i);
+
+                imageList1.Images.Add($"{index.ToString()}", rotated);
+
+                index++;
+            }
+        }
+
+        #region ImageHelperFuncs
+
+        public static Image RotateImage(Image img, float rotationAngle)
+        {
+            //create an empty Bitmap image
+            Bitmap bmp = new Bitmap(img.Width, img.Height);
+
+            //turn the Bitmap into a Graphics object
+            Graphics gfx = Graphics.FromImage(bmp);
+
+            //now we set the rotation point to the center of our image
+            gfx.TranslateTransform((float)bmp.Width / 2, (float)bmp.Height / 2);
+
+            //now rotate the image
+            gfx.RotateTransform(rotationAngle);
+
+            gfx.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
+
+            //set the InterpolationMode to HighQualityBicubic so to ensure a high
+            //quality image once it is transformed to the specified size
+            gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            //now draw our new image onto the graphics object
+            gfx.DrawImage(img, new Point(0, 0));
+
+            //dispose of our Graphics object
+            gfx.Dispose();
+
+            //return the image
+            return bmp;
+        }
+
+        #endregion
 
         public void Dispose()
         {

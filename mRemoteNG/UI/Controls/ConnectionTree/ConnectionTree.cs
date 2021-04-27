@@ -71,7 +71,7 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
             UseOverlays = false;
             _themeManager = ThemeManager.getInstance();
             _themeManager.ThemeChanged += ThemeManagerOnThemeChanged;
-            ApplyTheme();
+            ApplyTheme(); 
         }
 
         private void ThemeManagerOnThemeChanged()
@@ -117,7 +117,7 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
             _contextMenu = new ConnectionContextMenu(this);
             ContextMenuStrip = _contextMenu;
             SetupDropSink();
-            SetEventHandlers();
+            SetEventHandlers(); 
         }
 
         private void AddColumns(ImageGetterDelegate imageGetterDelegate)
