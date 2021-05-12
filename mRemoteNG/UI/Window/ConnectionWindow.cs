@@ -46,7 +46,6 @@ namespace mRemoteNG.UI.Window
             TabText = formText;
             connDock.DocumentStyle = DocumentStyle.DockingWindow;
             //connDock.ShowDocumentIcon = true;
-            
 
             connDock.ActiveContentChanged += ConnDockOnActiveContentChanged;
         }

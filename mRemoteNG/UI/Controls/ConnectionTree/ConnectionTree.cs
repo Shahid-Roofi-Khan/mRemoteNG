@@ -52,7 +52,8 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
             new TreeNodeCompositeClickHandler();
 
         
-        private Image testimg = new Bitmap(Properties.Resources.Green_1, new Size(48, 48));
+        //private Image testimg = new Bitmap(Properties.Resources.HostStatus_On, new Size(16, 16));
+        private Image testimg = new Bitmap(Properties.Resources.Warning, new Size(16, 16));
 
         // ----------------------- Shahid changes for event handler
         // public DataGridViewCellFormattingEventHandler FormattingEventHandler { get; set; } = new DataGridViewCellFormattingEventHandler();
@@ -78,7 +79,7 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
                 decoration.Font = new Font(this.Font.Name, this.Font.SizeInPoints, FontStyle.Bold);
                 decoration.TextColor = Color.Green;
              //   decoration.Rotation = -20;
-                e.SubItem.Decorations.Add(decoration); //NB. Sets Decoration
+             //   e.SubItem.Decorations.Add(decoration); //NB. Sets Decoration
 
                 decoration = new TextDecoration("300ms", 255);
                 decoration.Alignment = ContentAlignment.MiddleRight;
@@ -536,6 +537,14 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
         {
             if (mouseEventArgs.Clicks < 2) return;
             // ReSharper disable once NotAccessedVariable
+
+            //var connectionForm = conForm ?? Runtime.WindowList.FromString(connectionPanel) as ConnectionWindow;
+
+            //if (connectionForm == null)
+            //    connectionForm = _panelAdder.AddPanel(connectionPanel);
+            
+
+
             OLVColumn column;
             var listItem = GetItemAt(mouseEventArgs.X, mouseEventArgs.Y, out column);
             if (!(listItem?.RowObject is ConnectionInfo clickedNode)) return;
@@ -548,8 +557,9 @@ namespace mRemoteNG.UI.Controls.ConnectionTree
             // ReSharper disable once NotAccessedVariable
             OLVColumn column;
             var listItem = GetItemAt(mouseEventArgs.X, mouseEventArgs.Y, out column);
-            if (!(listItem?.RowObject is ConnectionInfo clickedNode)) return;
+            if (!(listItem?.RowObject is ConnectionInfo clickedNode))  return;
             SingleClickHandler.Execute(clickedNode);
+            
         }
 
         private void tvConnections_CellToolTipShowing(object sender, ToolTipShowingEventArgs e)

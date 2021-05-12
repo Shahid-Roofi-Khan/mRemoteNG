@@ -22,11 +22,23 @@ namespace mRemoteNG.Connection
         private readonly List<string> _activeConnections = new List<string>();
 
         public IEnumerable<string> ActiveConnections => _activeConnections;
+        private static ConnectionWindow DefaultWindow = null;
+       
 
         public bool SwitchToOpenConnection(ConnectionInfo connectionInfo)
         {
             var interfaceControl = FindConnectionContainer(connectionInfo);
-            if (interfaceControl == null) return false;
+            if (interfaceControl == null) {
+
+                //      ConnectionWindow.DefaultTab.Focus();
+                //     ConnectionWindow.DefaultTab.Show(); //
+
+                //DefaultWindow = (DefaultWindow == null) ? _panelAdder.AddPanel("") : DefaultWindow;
+                //DefaultWindow.Show();
+                //DefaultWindow.Focus();
+                return false;
+
+            } //return false;
             var connT = (ConnectionTab)interfaceControl.FindForm();
             connT?.Focus();
             var findForm = (ConnectionTab)interfaceControl.FindForm();
